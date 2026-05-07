@@ -28,7 +28,7 @@ for (var i = 0; i < 12; i++) {
 
 function draw() {
   var x = mouse.x,
-      y = mouse.y;
+      y = mouse.y + -115;
   
 
   dots.forEach(function(dot, index, dots) {
