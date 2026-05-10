@@ -1,34 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
   <head>
-  <!-- Google Tag Manager 
+    <!-- Google Tag Manager 
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-NFBXRNXG');</script>
   End Google Tag Manager -->
-  <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GRIT SQUARE!</title>
     <link rel="stylesheet" href="trailcol.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<script src="mousetrail.js" type="module"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="mousetrail.js" type="module"></script>
     <script src="script.js" type="module"></script>
+    <script src="dawg.json" type="module"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3D1CZZKP5D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3D1CZZKP5D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-3D1CZZKP5D');
-</script>
+      gtag("config", "G-3D1CZZKP5D");
+    </script>
   </head>
   <body oncontextmenu="return false;">
     <!-- Google Tag Manager (noscript) 
@@ -36,34 +42,48 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      End Google Tag Manager (noscript) -->
     <!--  <input type="text" id="inName" />-->
+    <button onclick="getDog">Fetch</button>
+    <br /><br />
+    <img id="dawgpic" width="300" />
+    <script>
+      function getDog() {
+        fetch("https://dog.ceo/api/breeds/image/random")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("dog").src = data.message;
+          });
+      }
+    </script>
     <header class="composer-bar">
       <div class="composer-bar__content">
         <div class="composer-group composer-group--identity">
           <button id="btn">Submit Name</button>
-          <input type="text" id="nameField" placeholder="Your name">
+          <input type="text" id="nameField" placeholder="Your name" />
         </div>
-        
 
         <div class="composer-group composer-group--options">
           <label for="post-it-color">color</label>
-          <input type="color" name="post-it-color" id="post-it-color" value="#000000" />
+          <input
+            type="color"
+            name="post-it-color"
+            id="post-it-color"
+            value="#000000"
+          />
 
           <label class="toggle-option" for="uppercaseCheckbox">
-            <input type="checkbox" id="uppercaseCheckbox">
+            <input type="checkbox" id="uppercaseCheckbox" />
             <span>uppercase</span>
           </label>
 
           <label class="toggle-option" for="italicCheckbox">
-            <input type="checkbox" id="italicCheckbox">
+            <input type="checkbox" id="italicCheckbox" />
             <span>italic</span>
-            
           </label>
 
           <label class="toggle-option" for="boldCheckbox">
-            <input type="checkbox" id="boldCheckbox">
+            <input type="checkbox" id="boldCheckbox" />
             <span>bold</span>
           </label>
-          
         </div>
 
         <div class="composer-group composer-group--actions">
@@ -76,8 +96,7 @@
           </select>
           <button id="delete-all-btn">Delete All Notes</button>
           <label for="bg-färg">bg-color :</label>
-          <input  type="color"  id="colorPicker">
-
+          <input type="color" id="colorPicker" />
         </div>
       </div>
     </header>
@@ -87,10 +106,19 @@
     </div>
 
     <div id="message-modal" class="message-modal" aria-hidden="true">
-      <div class="message-modal__card" role="dialog" aria-modal="true" aria-labelledby="message-modal-title">
+      <div
+        class="message-modal__card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="message-modal-title"
+      >
         <h3 id="message-modal-title">Write your message</h3>
-        <textarea id="textField" maxlength="200"placeholder="Type your note here..."></textarea>
-         <p id="charCount"> 0 / 200</p>
+        <textarea
+          id="textField"
+          maxlength="200"
+          placeholder="Type your note here..."
+        ></textarea>
+        <p id="charCount">0 / 200</p>
         <div class="message-modal__actions">
           <button id="modal-smiley-btn" type="button">Add Smiley 😊</button>
           <button id="modal-cancel-btn" type="button">Cancel</button>
@@ -98,17 +126,20 @@
         </div>
       </div>
     </div>
-    
+
     <section id="weather-widget" class="weather-widget">
       Hämtar väder...
     </section>
-    
+
     <section id="hover-fun">
-  <h2>Hover Surprise!</h2>
-  <p onmouseover="this.innerHTML='🎉 Surprise!'" onmouseout="this.innerHTML='👋 Hover over me!'">
-    👋 Hover over me!
-  </p>
-</section>
+      <h2>Hover Surprise!</h2>
+      <p
+        onmouseover="this.innerHTML = '🎉 Surprise!'"
+        onmouseout="this.innerHTML = '👋 Hover over me!'"
+      >
+        👋 Hover over me!
+      </p>
+    </section>
 
     <!-- <p class="bubble speech" style="top:20vw; left:30vh">sdfsdf sdf sd sdfdx df a ad asd dsdsHello world</p>
     <p class="bubble thought" >
@@ -116,7 +147,8 @@
       debitis.
     </p> 
     -->
-    <footer>&copy; Alrik He - The king of version control 
+    <footer>
+      &copy; Alrik He - The king of version control
       <nav>
         <a href="/docs/pages/AboutUs/aboutUs.html">About us</a> -
         <a href="/docs/pages/privacy-policy/index.html">Privacy policy</a>
@@ -124,13 +156,19 @@
     </footer>
   </body>
   <script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'sv', 
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
-}
-</script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: "sv",
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        },
+        "google_translate_element",
+      );
+    }
+  </script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script
+    type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+  ></script>
 </html>
