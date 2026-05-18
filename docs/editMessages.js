@@ -5,6 +5,8 @@ export function editMessage(db, messagePath, currentText) {
   
   if (changedText !== null && changedText.trim() !== "") {
     const messageRef = ref(db, messagePath);
+      console.log("EDIT: ",currentText," \nTO:",changedText, "\non",messageRef);
+
     update(messageRef, {
       message: changedText,
       isEdited: true

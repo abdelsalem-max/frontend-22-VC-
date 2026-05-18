@@ -1,5 +1,5 @@
-import { editMessage } from "./editMessages.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+import { editMessage } from "./editMessages.js";
 import {
   getDatabase,
   ref,
@@ -45,7 +45,7 @@ const modalCancelBtn = document.getElementById("modal-cancel-btn");
 const headerColorInput = document.getElementById("post-it-color");
 const weather = document.getElementById("weather-widget");
 const body = document.body;
-const introEffectMs = 420;
+//const introEffectMs = 420;
 const splashCleanupMs = 380;
 
 console.log(db);
@@ -692,7 +692,7 @@ onChildAdded(ref(db, "/messages"), (data) => {
         .querySelector(`#edit-btn-${messageId}`)
         ?.addEventListener("click", (event) => {
           event.stopPropagation();
-          editMessage(db, messageId, d.message);
+          editMessage(db, `/messages/${messageId}`, d.message);
         });
 
       // 🔄 Live-uppdatering
