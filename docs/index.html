@@ -21,6 +21,7 @@
     <script src="mousetrail.js" type="module"></script>
     <script src="script.js" type="module"></script>
     <script src="dawg.json" type="module"></script>
+    <script src="dawg2.js" type="module"></script>
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -42,7 +43,6 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
      End Google Tag Manager (noscript) -->
     <!--  <input type="text" id="inName" />-->
-    <button onclick="getDog">Fetch</button>
     <br /><br />
     <img id="dawgpic" width="300" />
     <script>
@@ -50,7 +50,10 @@
         fetch("https://dog.ceo/api/breeds/image/random")
           .then((response) => response.json())
           .then((data) => {
-            document.getElementById("dog").src = data.message;
+          const pug = document.createElement("img")
+          pug.src = data.message;
+          const div = document.getElementById("hover-fun");
+          div.append(pug);
           });
       }
     </script>
@@ -58,6 +61,7 @@
       <div class="composer-bar__content">
         <div class="composer-group composer-group--identity">
           <button id="btn">Submit Name</button>
+          <button onclick="getDog()">Fetch</button>
           <input type="text" id="nameField" placeholder="Your name" />
         </div>
 
