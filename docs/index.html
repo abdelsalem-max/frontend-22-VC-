@@ -44,7 +44,7 @@
      End Google Tag Manager (noscript) -->
     <!--  <input type="text" id="inName" />-->
     <br /><br />
-    <img id="dawgpic" width="300" />
+    <img id="dawgpic" width="200" hi />
     <script>
       function getDog() {
         fetch("https://dog.ceo/api/breeds/image/random")
@@ -52,6 +52,7 @@
           .then((data) => {
           const pug = document.createElement("img")
           pug.src = data.message;
+          pug.width = 100
           const div = document.getElementById("hover-fun");
           div.append(pug);
           });
